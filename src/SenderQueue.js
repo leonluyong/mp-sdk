@@ -58,7 +58,7 @@ class HttpTask {
             }
             this.callback({
                 code: res.data.code,
-                data: res.data,
+                data: res.data.data,
                 msg,
             });
         } else {
