@@ -81,6 +81,7 @@ class TDAnalytics {
         var element = new HttpTask(JSON.stringify({}), 'https://metrics.unity.cn/app-info', 1, 3000, auth, function (res) {
             console.log(res);
             config.appId = res.data.tdAppID;
+            config.uosAuth = auth;
             config.serverUrl = 'https://metrics.unity.cn';
 
             var td = new ThinkingDataAPIForNative(config);
