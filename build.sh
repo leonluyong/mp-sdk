@@ -50,74 +50,74 @@ releaseMPMG()
   ################################
   PRINT "开始发布小程序 SDK" INFO
   ################################
-  if [ ! -f build/thinkingdata.wx.js ]; then
-    PRINT "警告: build/thinkingdata.wx.js 不存在, 跳过微信小程序..." WARN
+  if [ ! -f build/tdanalytics.wx.js ]; then
+    PRINT "警告: build/tdanalytics.wx.js 不存在, 跳过微信小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.wx.js -c -m -o release/$PACKAGE_MP/thinkingdata.wx.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.wx.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.wx.js -c -m -o release/$PACKAGE_MP/tdanalytics.wx.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.wx.min.js
   fi
 
-  if [ ! -f build/thinkingdata.swan.js ]; then
-    PRINT "警告: build/thinkingdata.swan.js 不存在, 跳过百度小程序..." WARN
+  if [ ! -f build/tdanalytics.swan.js ]; then
+    PRINT "警告: build/tdanalytics.swan.js 不存在, 跳过百度小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.swan.js -c -m -o release/$PACKAGE_MP/thinkingdata.swan.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.swan.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.swan.js -c -m -o release/$PACKAGE_MP/tdanalytics.swan.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.swan.min.js
   fi
 
-  if [ ! -f build/thinkingdata.my.js ]; then
-    PRINT "警告: build/thinkingdata.my.js 不存在, 跳过支付宝小程序..." WARN
+  if [ ! -f build/tdanalytics.my.js ]; then
+    PRINT "警告: build/tdanalytics.my.js 不存在, 跳过支付宝小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.my.js -c -m -o release/$PACKAGE_MP/thinkingdata.my.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.my.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.my.js -c -m -o release/$PACKAGE_MP/tdanalytics.my.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.my.min.js
   fi
 
-  if [ ! -f build/thinkingdata.dd.js ]; then
-    PRINT "警告: build/thinkingdata.dd.js 不存在, 跳过钉钉小程序..." WARN
+  if [ ! -f build/tdanalytics.dd.js ]; then
+    PRINT "警告: build/tdanalytics.dd.js 不存在, 跳过钉钉小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.dd.js -c -m -o release/$PACKAGE_MP/thinkingdata.dd.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.dd.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.dd.js -c -m -o release/$PACKAGE_MP/tdanalytics.dd.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.dd.min.js
   fi
 
-  if [ ! -f build/thinkingdata.tt.js ]; then
-    PRINT "警告: build/thinkingdata.tt.js 不存在, 跳过字节跳动小程序..." WARN
+  if [ ! -f build/tdanalytics.tt.js ]; then
+    PRINT "警告: build/tdanalytics.tt.js 不存在, 跳过字节跳动小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.tt.js -c -m -o release/$PACKAGE_MP/thinkingdata.tt.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.tt.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.tt.js -c -m -o release/$PACKAGE_MP/tdanalytics.tt.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.tt.min.js
   fi
 
-  if [ ! -f build/thinkingdata.ks.js ]; then
-    PRINT "警告: build/thinkingdata.ks.js 不存在, 跳过快手小程序..." WARN
+  if [ ! -f build/tdanalytics.ks.js ]; then
+    PRINT "警告: build/tdanalytics.ks.js 不存在, 跳过快手小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.ks.js -c -m -o release/$PACKAGE_MP/thinkingdata.ks.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.ks.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.ks.js -c -m -o release/$PACKAGE_MP/tdanalytics.ks.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.ks.min.js
   fi
 
-  if [ ! -f build/thinkingdata.quick.js ]; then
-    PRINT "警告: build/thinkingdata.quick.js 不存在, 跳过快应用..." WARN
+  if [ ! -f build/tdanalytics.quick.js ]; then
+    PRINT "警告: build/tdanalytics.quick.js 不存在, 跳过快应用..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.quick.js -c -m -o release/$PACKAGE_MP/thinkingdata.quick.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.quick.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.quick.js -c -m -o release/$PACKAGE_MP/tdanalytics.quick.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.quick.min.js
   fi
 
-  if [ ! -f build/thinkingdata.qq.js ]; then
-    PRINT "警告: build/thinkingdata.qq.js 不存在, 跳过QQ小程序..." WARN
+  if [ ! -f build/tdanalytics.qq.js ]; then
+    PRINT "警告: build/tdanalytics.qq.js 不存在, 跳过QQ小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.qq.js -c -m -o release/$PACKAGE_MP/thinkingdata.qq.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.qq.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.qq.js -c -m -o release/$PACKAGE_MP/tdanalytics.qq.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.qq.min.js
   fi
 
-  if [ ! -f build/thinkingdata.jd.js ]; then
-    PRINT "警告: build/thinkingdata.jd.js 不存在, 跳过京东小程序..." WARN
+  if [ ! -f build/tdanalytics.jd.js ]; then
+    PRINT "警告: build/tdanalytics.jd.js 不存在, 跳过京东小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.jd.js -c -m -o release/$PACKAGE_MP/thinkingdata.jd.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.jd.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.jd.js -c -m -o release/$PACKAGE_MP/tdanalytics.jd.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.jd.min.js
   fi
 
-  if [ ! -f build/thinkingdata.qh.js ]; then
-    PRINT "警告: build/thinkingdata.qh.js 不存在, 跳过360小程序..." WARN
+  if [ ! -f build/tdanalytics.qh.js ]; then
+    PRINT "警告: build/tdanalytics.qh.js 不存在, 跳过360小程序..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.qh.js -c -m -o release/$PACKAGE_MP/thinkingdata.qh.min.js
-    echo created release/$PACKAGE_MP/thinkingdata.qh.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.qh.js -c -m -o release/$PACKAGE_MP/tdanalytics.qh.min.js
+    echo created release/$PACKAGE_MP/tdanalytics.qh.min.js
   fi
 
   echo
@@ -132,79 +132,79 @@ releaseMPMG()
   ################################
   PRINT "开始发布小游戏 SDK" INFO
   ################################
-  if [ ! -f build/thinkingdata.mg.wx.js ]; then
-    PRINT "警告: build/thinkingdata.mg.wx.js 不存在, 跳过微信小游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.wx.js ]; then
+    PRINT "警告: build/tdanalytics.mg.wx.js 不存在, 跳过微信小游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.wx.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.wx.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.wx.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.wx.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.wx.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.wx.min.js
   fi
 
-  if [ ! -f build/thinkingdata.mg.qq.js ]; then
-    PRINT "警告: build/thinkingdata.mg.qq.js 不存在, 跳过 QQ 小游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.qq.js ]; then
+    PRINT "警告: build/tdanalytics.mg.qq.js 不存在, 跳过 QQ 小游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.qq.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.qq.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.qq.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.qq.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.qq.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.qq.min.js
   fi
 
-  if [ ! -f build/thinkingdata.mg.tt.js ]; then
-    PRINT "警告: build/thinkingdata.mg.tt.js 不存在, 跳过字节跳动小游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.tt.js ]; then
+    PRINT "警告: build/tdanalytics.mg.tt.js 不存在, 跳过字节跳动小游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.tt.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.tt.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.tt.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.tt.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.tt.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.tt.min.js
   fi
 
-  if [ ! -f build/thinkingdata.mg.swan.js ]; then
-    PRINT "警告: build/thinkingdata.mg.swan.js 不存在, 跳过百度小游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.swan.js ]; then
+    PRINT "警告: build/tdanalytics.mg.swan.js 不存在, 跳过百度小游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.swan.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.swan.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.swan.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.swan.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.swan.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.swan.min.js
   fi
 
-  if [ ! -f build/thinkingdata.mg.bl.js ]; then
-    PRINT "警告: build/thinkingdata.mg.bl.js 不存在, 跳过哔哩哔哩小游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.bl.js ]; then
+    PRINT "警告: build/tdanalytics.mg.bl.js 不存在, 跳过哔哩哔哩小游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.bl.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.bl.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.bl.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.bl.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.bl.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.bl.min.js
   fi
   echo
 
   ################################
   PRINT "开始发布快游戏 SDK" INFO
   ################################
-  if [ ! -f build/thinkingdata.mg.oppo.js ]; then
-    PRINT "警告: build/thinkingdata.mg.oppo.js 不存在, 跳过 OPPO 快游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.oppo.js ]; then
+    PRINT "警告: build/tdanalytics.mg.oppo.js 不存在, 跳过 OPPO 快游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.oppo.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.oppo.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.qg.oppo.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.oppo.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.oppo.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.qg.oppo.min.js
   fi
 
-  if [ ! -f build/thinkingdata.mg.vivo.js ]; then
-    PRINT "警告: build/thinkingdata.mg.vivo.js 不存在, 跳过 VIVO 快游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.vivo.js ]; then
+    PRINT "警告: build/tdanalytics.mg.vivo.js 不存在, 跳过 VIVO 快游戏..." WARN
   else
-    ./node_modules/.bin/rollup -c --environment BUILD:COMPRESS,SRC:build/thinkingdata.mg.vivo.js,DST:release/$PACKAGE_MG/thinkingdata.mg.vivo.min.js
+    ./node_modules/.bin/rollup -c --environment BUILD:COMPRESS,SRC:build/tdanalytics.mg.vivo.js,DST:release/$PACKAGE_MG/tdanalytics.mg.vivo.min.js
   fi
 
-  if [ ! -f build/thinkingdata.mg.huawei.js ]; then
-    PRINT "警告: build/thinkingdata.mg.huawei.js 不存在, 跳过华为快游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.huawei.js ]; then
+    PRINT "警告: build/tdanalytics.mg.huawei.js 不存在, 跳过华为快游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.huawei.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.huawei.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.huawei.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.huawei.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.huawei.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.huawei.min.js
   fi
 
-   if [ ! -f build/thinkingdata.mg.xiaomi.js ]; then
-    PRINT "警告: build/thinkingdata.mg.xiaomi.js 不存在, 跳过小米快游戏..." WARN
+   if [ ! -f build/tdanalytics.mg.xiaomi.js ]; then
+    PRINT "警告: build/tdanalytics.mg.xiaomi.js 不存在, 跳过小米快游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.xiaomi.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.xiaomi.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.xiaomi.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.xiaomi.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.xiaomi.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.xiaomi.min.js
   fi
 
 
 
-  if [ ! -f build/thinkingdata.mg.mz.js ]; then
-    PRINT "警告: build/thinkingdata.mg.mz.js 不存在, 跳过魅族快游戏..." WARN
+  if [ ! -f build/tdanalytics.mg.mz.js ]; then
+    PRINT "警告: build/tdanalytics.mg.mz.js 不存在, 跳过魅族快游戏..." WARN
   else
-    ./node_modules/.bin/uglifyjs build/thinkingdata.mg.mz.js -c -m -o release/$PACKAGE_MG/thinkingdata.mg.mz.min.js
-    echo created release/$PACKAGE_MG/thinkingdata.mg.mz.min.js
+    ./node_modules/.bin/uglifyjs build/tdanalytics.mg.mz.js -c -m -o release/$PACKAGE_MG/tdanalytics.mg.mz.min.js
+    echo created release/$PACKAGE_MG/tdanalytics.mg.mz.min.js
   fi
   echo
 
@@ -231,9 +231,9 @@ releaseLayaSDK()
     mkdir -p release/$PACKAGE_LAYA
     echo created folder release/$PACKAGE_LAYA
   fi
-  ./node_modules/.bin/rollup -c --environment BUILD:COMPRESS,SRC:build/thinkingdata.mg.laya.js,DST:release/$PACKAGE_LAYA/thinkingdata.mg.laya.min.js
-  ./node_modules/.bin/rollup -c --environment BUILD:COMPRESS,SRC:build/thinkingdata.mg.layats.js,DST:release/$PACKAGE_LAYA/thinkingdata.mg.layats.min.js
-  cp assets/ThinkingAnalyticsSDK.d.ts release/$PACKAGE_LAYA/ 
+  ./node_modules/.bin/rollup -c --environment BUILD:COMPRESS,SRC:build/tdanalytics.mg.laya.js,DST:release/$PACKAGE_LAYA/tdanalytics.mg.laya.min.js
+  ./node_modules/.bin/rollup -c --environment BUILD:COMPRESS,SRC:build/tdanalytics.mg.layats.js,DST:release/$PACKAGE_LAYA/tdanalytics.mg.layats.min.js
+  cp assets/ThinkingAnalyticsSDK.d.ts release/$PACKAGE_LAYA/
   cp assets/README.LAYA.md release/$PACKAGE_LAYA/README.md
   cp -rf src/native/laya/ios release/$PACKAGE_LAYA/
   cp -rf src/native/laya/android release/$PACKAGE_LAYA/
@@ -252,9 +252,9 @@ releaseEgretSDK()
     mkdir -p release/$PACKAGE_EGRET
     echo created folder release/$PACKAGE_EGRET
   fi
-  cp assets/ThinkingAnalyticsSDK.d.ts release/$PACKAGE_EGRET/ 
-  cp build/thinkingdata.mg.egret.js release/$PACKAGE_EGRET/ThinkingAnalyticsSDK.js
-  ./node_modules/.bin/uglifyjs build/thinkingdata.mg.egret.js -c -m -o release/$PACKAGE_EGRET/ThinkingAnalyticsSDK.min.js
+  cp assets/ThinkingAnalyticsSDK.d.ts release/$PACKAGE_EGRET/
+  cp build/tdanalytics.mg.egret.js release/$PACKAGE_EGRET/ThinkingAnalyticsSDK.js
+  ./node_modules/.bin/uglifyjs build/tdanalytics.mg.egret.js -c -m -o release/$PACKAGE_EGRET/ThinkingAnalyticsSDK.min.js
   cp assets/README.EGRET.md release/$PACKAGE_EGRET/README.md
   cp -rf src/native/egret/ios release/$PACKAGE_EGRET/
   cp -rf src/native/egret/android release/$PACKAGE_EGRET/
@@ -273,7 +273,7 @@ releaseCocosCreatorSDK()
     mkdir -p release/$PACKAGE_COCOS
     echo created folder release/$PACKAGE_COCOS
   fi
-  ./node_modules/.bin/uglifyjs build/thinkingdata.mg.cocoscreator.js -c -m -o release/$PACKAGE_COCOS/thinkingdata.mg.cocoscreator.min.js
+  ./node_modules/.bin/uglifyjs build/tdanalytics.mg.cocoscreator.js -c -m -o release/$PACKAGE_COCOS/tdanalytics.mg.cocoscreator.min.js
   cp assets/ThinkingAnalyticsSDK.d.ts release/$PACKAGE_COCOS/
   cp assets/README.CC.md release/$PACKAGE_COCOS/README.md
   cp -rf src/native/cc/ios release/$PACKAGE_COCOS/
@@ -372,12 +372,12 @@ elif [ "$1" == "build" ]; then
   echo "[W] WEB（用于功能测试）"
   echo
 
-  PRINT "输入您需要打包的平台编号(全部打包请按回车键):" 
+  PRINT "输入您需要打包的平台编号(全部打包请按回车键):"
 
   read option
 
   echo
-  case "$option" in 
+  case "$option" in
     P1)
       PRINT "开始打包微信小程序 SDK" INFO
       ./node_modules/.bin/rollup -c --environment BUILD:WECHAT_MP
@@ -478,7 +478,7 @@ elif [ "$1" == "build" ]; then
     *)
       if [ -z "$option" ]; then
         PRINT "开始打包全部平台" INFO
-        ./node_modules/.bin/rollup -c    
+        ./node_modules/.bin/rollup -c
         echo
         PRINT "打包任务完成! 如需发布最终版本可执行 npm run release" INFO
         echo

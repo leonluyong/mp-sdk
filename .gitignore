@@ -2,6 +2,7 @@
 thinkingdata*.min.js
 /*.min.js
 .vscode/
+.idea
 node_modules
 /build
 /release

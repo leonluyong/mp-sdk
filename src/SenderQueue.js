@@ -6,10 +6,11 @@ import {
 import PlatformAPI from './PlatformAPI';
 
 class HttpTask {
-    constructor(data, serverUrl, tryCount, timeout, callback) {
+    constructor(data, serverUrl, tryCount, timeout, auth, callback) {
         this.data = data;
         this.serverUrl = serverUrl;
         this.callback = callback;
+        this.auth = auth;
         this.tryCount = _.isNumber(tryCount) ? tryCount : 1;
         this.timeout = _.isNumber(timeout) ? timeout : 3000;
         this.taClassName = 'HttpTask';
@@ -19,6 +20,9 @@ class HttpTask {
         var that = this;
         var headers = _.createExtraHeaders();
         headers['content-type'] = 'application/json';
+        if(_.isString(this.auth)){
+            headers['Authorization'] = this.auth;
+        }
         // eslint-disable-next-line no-undef
         this.runTime = _.getCurrentTimeStamp();
         PlatformAPI.request({
@@ -54,6 +58,7 @@ class HttpTask {
             }
             this.callback({
                 code: res.data.code,
+                data: res.data,
                 msg,
             });
         } else {
@@ -222,7 +227,7 @@ class SenderQueue {
                 }
             });
         } else {
-            element = new HttpTask(JSON.stringify(data), serverUrl, config.maxRetries, config.sendTimeout, (res) => {
+            element = new HttpTask(JSON.stringify(data), serverUrl, config.maxRetries, config.sendTimeout, config.auth, (res) => {
                 that.isRunning = false;
                 delete this.runTime;
                 if (_.isFunction(config.callback)) {
@@ -271,7 +276,7 @@ class SenderQueue {
                 var flushTime = _.getCurrentTimeStamp();
                 data['#flush_time'] = flushTime;
                 var element;
-                element = new HttpTask(JSON.stringify(data), httpTask0.serverUrl, httpTask0.tryCount, httpTask0.timeout, function (res) {
+                element = new HttpTask(JSON.stringify(data), httpTask0.serverUrl, httpTask0.tryCount, httpTask0.timeout, httpTask0.auth, function (res) {
                     for (const cb in callbackList) {
                         if (Object.hasOwnProperty.call(callbackList, cb)) {
                             const element = callbackList[cb];
@@ -302,4 +307,4 @@ class SenderQueue {
 
 
 var senderQueue = new SenderQueue();
-export default senderQueue;
+export {senderQueue, HttpTask};

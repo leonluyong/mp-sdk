@@ -17,7 +17,7 @@ import {
 } from './Config';
 
 // senderQueue is  a global queue for events being posted to server.
-import senderQueue from './SenderQueue';
+import {senderQueue} from './SenderQueue';
 
 // PlatformAPI provides interfaces for storage, network, system information, etc.
 import PlatformAPI from './PlatformAPI';
@@ -396,7 +396,8 @@ class BatchConsumer {
                     }
                 },
                 debugMode: this.config.debugMode,
-                deviceId: this.ta.getDeviceId()
+                deviceId: this.ta.getDeviceId(),
+                auth: "Basic " + _.base64Encode(this.config["uosAppId"]+ ":" + this.config["uosAppSecret"])
             }, false);
         }
     }
@@ -737,7 +738,8 @@ export default class ThinkingDataAPI {
                 sendTimeout: this.config.sendTimeout,
                 callback: eventData.onComplete,
                 debugMode: eventData.debugMode,
-                deviceId: this.getDeviceId()
+                deviceId: this.getDeviceId(),
+                auth: "Basic " + _.base64Encode(this.config.uosAppId+ ":" + this.config.uosAppSecret)
             });
             return;
         }
@@ -785,7 +787,8 @@ export default class ThinkingDataAPI {
                 sendTimeout: this.config.sendTimeout,
                 callback: eventData.onComplete,
                 debugMode: this.config.debugMode,
-                deviceId: this.getDeviceId()
+                deviceId: this.getDeviceId(),
+                auth: "Basic " + _.base64Encode(this.config.uosAppId+ ":" + this.config.uosAppSecret)
             });
         }
     }

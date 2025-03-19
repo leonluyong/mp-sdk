@@ -1,4 +1,5 @@
 import ThinkingDataAPIForNative from './ThinkingDataAPI.cc';
+import {HttpTask} from './SenderQueue';
 
 /**
  * TDAnalytics, ThinkingData Analytics SDK for Mini Game & App.
@@ -64,7 +65,8 @@ class TDAnalytics {
      * All properties that can be set are independent of the main instance.
      *
      * @param {Object} config
-     * @param {String} config.appId Project App ID
+     * @param {String} config.uosAppId Uos App ID
+     * @param {String} config.uosAppSecret Uos App Secret
      * @param {String} config.serverUrl Project Server Url
      * @param {Object} config.autoTrack Auto-tracking Events
      * @param {Boolean} config.autoTrack.appShow Auto Track App Show Events
@@ -72,15 +74,23 @@ class TDAnalytics {
      * @param {Boolean} config.enableLog Enable Log Printing
      */
     static init(config) {
-        var td = new ThinkingDataAPIForNative(config);
-        td.init();
-        if (td !== undefined) {
-            if (this._defaultInstance === undefined) {
-                this._defaultInstance = td;
-                this._instanceMaps = {};
+        var auth = "Basic " + _.base64Encode(config.uosAppId + ":" + config.uosAppSecret)
+        var element = new HttpTask(JSON.stringify({}), "https://metrics.unity.cn/app-info", 1, 3000, auth, function (res) {
+            console.log(res);
+            config.appId = res.data.tdAppID;
+            config.serverUrl = "https://metrics.unity.cn";
+
+            var td = new ThinkingDataAPIForNative(config);
+            td.init();
+            if (td !== undefined) {
+                if (this._defaultInstance === undefined) {
+                    this._defaultInstance = td;
+                    this._instanceMaps = {};
+                }
+                this._instanceMaps[config.appId] = td;
             }
-            this._instanceMaps[config.appId] = td;
-        }
+        });
+        element.run();
     }
 
     //轻实例
