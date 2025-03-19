@@ -397,7 +397,7 @@ class BatchConsumer {
                 },
                 debugMode: this.config.debugMode,
                 deviceId: this.ta.getDeviceId(),
-                auth: "Basic " + _.base64Encode(this.config["uosAppId"]+ ":" + this.config["uosAppSecret"])
+                auth: 'Basic ' + _.base64Encode(this.config['uosAppId']+ ':' + this.config['uosAppSecret'])
             }, false);
         }
     }
@@ -739,7 +739,7 @@ export default class ThinkingDataAPI {
                 callback: eventData.onComplete,
                 debugMode: eventData.debugMode,
                 deviceId: this.getDeviceId(),
-                auth: "Basic " + _.base64Encode(this.config.uosAppId+ ":" + this.config.uosAppSecret)
+                auth: 'Basic ' + _.base64Encode(this.config.uosAppId+ ':' + this.config.uosAppSecret)
             });
             return;
         }
@@ -788,7 +788,7 @@ export default class ThinkingDataAPI {
                 callback: eventData.onComplete,
                 debugMode: this.config.debugMode,
                 deviceId: this.getDeviceId(),
-                auth: "Basic " + _.base64Encode(this.config.uosAppId+ ":" + this.config.uosAppSecret)
+                auth: 'Basic ' + _.base64Encode(this.config.uosAppId+ ':' + this.config.uosAppSecret)
             });
         }
     }

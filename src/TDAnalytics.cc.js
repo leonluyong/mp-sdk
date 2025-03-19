@@ -1,5 +1,8 @@
 import ThinkingDataAPIForNative from './ThinkingDataAPI.cc';
 import {HttpTask} from './SenderQueue';
+import {
+    _,
+} from './utils';
 
 /**
  * TDAnalytics, ThinkingData Analytics SDK for Mini Game & App.
@@ -74,11 +77,11 @@ class TDAnalytics {
      * @param {Boolean} config.enableLog Enable Log Printing
      */
     static init(config) {
-        var auth = "Basic " + _.base64Encode(config.uosAppId + ":" + config.uosAppSecret)
-        var element = new HttpTask(JSON.stringify({}), "https://metrics.unity.cn/app-info", 1, 3000, auth, function (res) {
+        var auth = 'Basic ' + _.base64Encode(config.uosAppId + ':' + config.uosAppSecret);
+        var element = new HttpTask(JSON.stringify({}), 'https://metrics.unity.cn/app-info', 1, 3000, auth, function (res) {
             console.log(res);
             config.appId = res.data.tdAppID;
-            config.serverUrl = "https://metrics.unity.cn";
+            config.serverUrl = 'https://metrics.unity.cn';
 
             var td = new ThinkingDataAPIForNative(config);
             td.init();
