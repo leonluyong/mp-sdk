@@ -76,49 +76,54 @@ class TDAnalytics {
      * @param {Boolean} config.autoTrack.appHide Auto Track App Hide Events
      * @param {Boolean} config.enableLog Enable Log Printing
      */
-    static init(config) {
-        var auth = 'Basic ' + _.base64Encode(config.uosAppId + ':' + config.uosAppSecret);
-        config.uosAuth = auth;
-        config.serverUrl = 'https://metrics.unity.cn';
-        var headers = {
-            'content-type': 'application/json',
-            'Authorization': auth
-        };
-        var request = PlatformAPI.request({
-            url: 'https://metrics.unity.cn/app-info',
-            method: 'GET',
-            header: headers,
-            success: (res) => {
-                if (!_.isUndefined(res) && !_.isUndefined(res.data)) {
-                    logger.info('Get app info success' + '(' + config.uosAppId + ') :' + JSON.stringify(res.data));
-                    if (!_.isUndefined(res.data['data'])) {
-                        config.appId = res.data['data']['tdAppID'];
-                        var td = new ThinkingDataAPIForNative(config);
-                        td.init();
-                        if (td !== undefined) {
-                            if (this._defaultInstance === undefined) {
-                                this._defaultInstance = td;
-                                this._instanceMaps = {};
+    static async init(config) {
+        const requestPromise = new Promise((resolve, reject) => {
+            var auth = 'Basic ' + _.base64Encode(config.uosAppId + ':' + config.uosAppSecret);
+            config.uosAuth = auth;
+            config.serverUrl = 'https://metrics.unity.cn';
+            var headers = {
+                'content-type': 'application/json',
+                'Authorization': auth
+            };
+            PlatformAPI.request({
+                url: 'https://metrics.unity.cn/app-info',
+                method: 'GET',
+                header: headers,
+                success: (res) => {
+                    if (!_.isUndefined(res) && !_.isUndefined(res.data)) {
+                        logger.info('Get app info success' + '(' + config.uosAppId + ') :' + JSON.stringify(res.data));
+                        if (!_.isUndefined(res.data['data'])) {
+                            config.appId = res.data['data']['tdAppID'];
+                            var td = new ThinkingDataAPIForNative(config);
+                            td.init();
+                            if (td !== undefined) {
+                                if (this._defaultInstance === undefined) {
+                                    this._defaultInstance = td;
+                                    this._instanceMaps = {};
+                                }
+                                this._instanceMaps[config.appId] = td;
                             }
-                            this._instanceMaps[config.appId] = td;
+                        } else {
+                            logger.info('Init app info fail' + '(' + config.uosAppId + '): undefined response data');
                         }
                     } else {
-                        logger.info('Init app info fail' + '(' + config.uosAppId + '): undefined response data');
+                        logger.info('Init app info fail' + '(' + config.uosAppId + '): undefined response');
                     }
-                } else {
-                    logger.info('Init app info fail' + '(' + config.uosAppId + '): undefined response');
+                    resolve();
+                },
+                fail: (res) => {
+                    logger.info('Get app info fail' + '(' + config.uosAppId + ') :' + res.errMsg);
+                    console.error(res);
+                    reject(res);
                 }
-            },
-            fail: (res) => {
-                logger.info('Get app info fail' + '(' + config.uosAppId + ') :' + res.errMsg);
-                console.error(res);
-            }
+            });
         });
-        setTimeout(function () {
-            if ((_.isObject(request) || _.isPromise(request)) && _.isFunction(request.abort)) {
-                request.abort();
-            }
-        }, 3000);
+
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error('Request timeout')), 3000);
+        });
+
+        await Promise.race([requestPromise, timeoutPromise]);
     }
 
     //轻实例
