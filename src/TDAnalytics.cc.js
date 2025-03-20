@@ -1,8 +1,8 @@
 import ThinkingDataAPIForNative from './ThinkingDataAPI.cc';
-import {HttpTask} from './SenderQueue';
 import {
-    _,
+    _, logger,
 } from './utils';
+import PlatformAPI from './PlatformAPI';
 
 /**
  * TDAnalytics, ThinkingData Analytics SDK for Mini Game & App.
@@ -78,23 +78,47 @@ class TDAnalytics {
      */
     static init(config) {
         var auth = 'Basic ' + _.base64Encode(config.uosAppId + ':' + config.uosAppSecret);
-        var element = new HttpTask(JSON.stringify({}), 'https://metrics.unity.cn/app-info', 1, 3000, auth, function (res) {
-            console.log(res);
-            config.appId = res.data.tdAppID;
-            config.uosAuth = auth;
-            config.serverUrl = 'https://metrics.unity.cn';
-
-            var td = new ThinkingDataAPIForNative(config);
-            td.init();
-            if (td !== undefined) {
-                if (this._defaultInstance === undefined) {
-                    this._defaultInstance = td;
-                    this._instanceMaps = {};
+        config.uosAuth = auth;
+        config.serverUrl = 'https://metrics.unity.cn';
+        var headers = {
+            'content-type': 'application/json',
+            'Authorization': auth
+        };
+        var request = PlatformAPI.request({
+            url: 'https://metrics.unity.cn/app-info',
+            method: 'GET',
+            header: headers,
+            success: (res) => {
+                if (!_.isUndefined(res) && !_.isUndefined(res.data)) {
+                    logger.info('Get app info success' + '(' + config.uosAppId + ') :' + JSON.stringify(res.data));
+                    if (!_.isUndefined(res.data['data'])) {
+                        config.appId = res.data['data']['tdAppID'];
+                        var td = new ThinkingDataAPIForNative(config);
+                        td.init();
+                        if (td !== undefined) {
+                            if (this._defaultInstance === undefined) {
+                                this._defaultInstance = td;
+                                this._instanceMaps = {};
+                            }
+                            this._instanceMaps[config.appId] = td;
+                        }
+                    } else {
+                        logger.info('Init app info fail' + '(' + config.uosAppId + '): undefined response data');
+                    }
+                } else {
+                    logger.info('Init app info fail' + '(' + config.uosAppId + '): undefined response');
                 }
-                this._instanceMaps[config.appId] = td;
+            },
+            fail: (res) => {
+                logger.info('Get app info fail' + '(' + config.uosAppId + ') :' + res.errMsg);
+                console.error(res);
             }
         });
-        element.run();
+        setTimeout(function () {
+            if ((_.isObject(request) || _.isPromise(request)) && _.isFunction(request.abort)) {
+                request.abort();
+            }
+        }, 3000);
     }
 
     //轻实例

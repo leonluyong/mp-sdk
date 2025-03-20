@@ -17,7 +17,7 @@ import {
 } from './Config';
 
 // senderQueue is  a global queue for events being posted to server.
-import {senderQueue} from './SenderQueue';
+import senderQueue from './SenderQueue';
 
 // PlatformAPI provides interfaces for storage, network, system information, etc.
 import PlatformAPI from './PlatformAPI';

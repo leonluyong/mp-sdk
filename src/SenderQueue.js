@@ -58,7 +58,6 @@ class HttpTask {
             }
             this.callback({
                 code: res.data.code,
-                data: res.data.data,
                 msg,
             });
         } else {
@@ -307,4 +306,4 @@ class SenderQueue {
 
 
 var senderQueue = new SenderQueue();
-export {senderQueue, HttpTask};
+export default senderQueue;
